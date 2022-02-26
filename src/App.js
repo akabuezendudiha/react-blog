@@ -3,7 +3,7 @@ import Home from './Home';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
 function App() {
@@ -12,20 +12,12 @@ function App() {
       <div className="App">
         <Navbar />
         <div className="content"> 
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/create">
-              <Create />
-            </Route>
-            <Route path="/blogs/:id">
-              <BlogDetails />
-            </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/blogs/:id" element={<BlogDetails />} /> 
+            <Route path="*" element={<NotFound />} />             
+          </Routes>
         </div>
       </div>
     </Router>
